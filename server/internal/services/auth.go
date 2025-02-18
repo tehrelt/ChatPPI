@@ -30,7 +30,7 @@ func NewAuthService() *AuthService {
 //		fmt.Println(err)
 //	}
 func (as *AuthService) Auth(username, password string) error {
-	if username != "admin" && password != "0000" {
+	if username != "admin" && password != "admin" {
 		return errors.New("неверный пользователь")
 	}
 
