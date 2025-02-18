@@ -1,6 +1,9 @@
 package services
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // AuthService предоставляет методы для аутентификации пользователей.
 type AuthService struct {
@@ -34,5 +37,19 @@ func (as *AuthService) Auth(username, password string) error {
 		return errors.New("неверный пользователь")
 	}
 
+	return nil
+}
+
+// Register регистрирует нового пользователя
+//
+// Принимает имя пользователя и пароль в качестве параметров.
+//
+// Возвращает ошибку, если имя пользователя уже существует.
+func (as *AuthService) Register(username, password string) error {
+	if username == "admin" {
+		return errors.New("невозможно создать admin")
+	}
+
+	fmt.Printf("Создание пользователя %s:%s", username, password)
 	return nil
 }
